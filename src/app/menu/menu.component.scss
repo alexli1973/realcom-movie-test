@@ -1,0 +1,12 @@
+.menu-line {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.menu-btn {
+  margin-top: 1em;
+  .btn {
+    width: 100%;
+  }
+}

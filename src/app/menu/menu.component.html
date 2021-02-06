@@ -1,0 +1,13 @@
+<div *ngIf="tabs">
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let tab of tabs | keyvalue" (click)="sendTab(tab.key)">
+      <div class="menu-line">
+        <span class="">{{tab.key | uppercase}}</span>
+        <span class="badge badge-primary">{{tab.value}}</span>
+      </div>
+    </li>
+  </ul>
+  <div class="menu-btn">
+    <button class="btn btn-primary" (click)="changeView()">Change View</button>
+  </div>
+</div>

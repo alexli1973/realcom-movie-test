@@ -1,0 +1,25 @@
+<div *ngIf="movie; else messageBlock">
+  <div class="card mb-3" style="max-width: 100%;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{{movie.poster}}" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{movie.title}}</h5>
+          <p class="card-text">{{movie.type}}</p>
+          <p class="card-text"><small class="text-muted">{{movie.year | extractYear}}</small></p>
+          <button class="btn btn-secondary" (click)="backTo()">Back</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<ng-template #messageBlock>
+  <div class="alert alert-secondary" role="alert">
+    {{this.messageText}}
+    <button class="btn btn-secondary" routerLink="/">Home</button>
+  </div>
+</ng-template>
+

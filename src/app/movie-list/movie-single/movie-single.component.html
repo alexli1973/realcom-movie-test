@@ -1,0 +1,35 @@
+<div class="card" style="max-width: 340px;">
+
+  <img #image src="{{movie.poster}}"
+       width="100px"
+       class="card-img-top"
+       alt="{{movie.title}}"
+       (error)="image.hidden = true" [hidden]="image.hidden"
+  >
+  <div class="card-body">
+    <div *ngIf="isEditing">
+      <app-movie-title-edit
+        [movieTitle]="movie.title"
+        [movieId]="movie.imdbID"
+        (valueChangeEvents)="valueChanged()"
+        (cancelEvents)="changeCanceled()"
+      >
+      </app-movie-title-edit>
+    </div>
+    <h6 *ngIf="!isEditing;"
+        (click)="enableEdit()"
+    >
+      {{movie.title}}
+    </h6>
+    <div>
+      <span class="card-text">{{movie.year | extractYear}}</span>
+    </div>
+    <button class="btn btn-secondary"
+            (click)="shareMovieDetails(movie)"
+            [routerLink]="['/movie/', movie.imdbID]"
+    >Details
+    </button>
+  </div>
+</div>
+
+

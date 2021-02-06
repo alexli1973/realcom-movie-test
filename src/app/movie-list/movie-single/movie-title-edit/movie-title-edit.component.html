@@ -1,0 +1,16 @@
+<input
+  type="text"
+  autofocus
+  value="{{movieTitle}}"
+  (blur)="blurEvent($event)"
+  [(ngModel)]="newValue"
+  (keydown.Enter)="saveChanges()"
+  (keydown.Meta.Enter)="saveChanges()"
+  (keydown.Escape)="cancelChanges()"
+>
+<!--<input-->
+<!--  type="text"-->
+<!--  autofocus-->
+<!--  value="{{movieTitle}}"-->
+<!--  (blur)="blurEvent($event)"-->
+<!--&gt;-->

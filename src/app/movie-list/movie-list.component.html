@@ -1,0 +1,57 @@
+  <div class="row">
+    <div class="col-md-2">
+      <app-menu
+        [tabs]="tabs"
+        (tabChanged)="tabChanged($event)"
+        (viewChanged)="viewChanged($event)"
+      ></app-menu>
+    </div>
+    <div class="col-md-10">
+      <ul class="nav justify-content-around">
+        <li class="nav-item">
+          <div class="input-group mb-3">
+            <input type="text"
+                   class="form-control"
+                   id="search-text"
+                   placeholder="search by title or year"
+                   aria-label="search"
+                   [(ngModel)]="searchText"
+            >
+          </div>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="btn btn-outline-primary" (click)="clearFilters()">
+            <i class="bi-x-square"></i> Clear
+          </button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="btn btn-outline-primary" (click)="refreshData()">
+            <i class="bi-download"></i> Refresh
+          </button>
+        </li>
+        <li class="nav-item">
+          <button [disabled]="isSortedByAsc" type="button" class="btn btn-outline-primary" (click)="sortByAsc()">
+            <i class="bi-sort-alpha-down"></i> Sort by ASC
+<!--            <i [ngClass]=sortAlphaDown></i> Sort by ASC-->
+          </button>
+          <button [disabled]="isSortedByDesc" type="button" class="btn btn-outline-primary" (click)="sortByDesc()">
+            <i class="bi bi-sort-alpha-down-alt"></i> Sort by DESC
+<!--            <i [ngClass]=sortAlphaDownAlt></i> Sort by DESC-->
+          </button>
+        </li>
+      </ul>
+      <div class="col-12">
+        <h2>movie-list</h2>
+        <div class="row">
+  <!--        <li *ngFor="let movie of movies | filterByType: filterVal  | searchText: {'isNumber':'year', 'isString':'title'}: searchText">-->
+          <div [ngClass]="btnStatus ? 'col-md-12' : 'col-md-4'"
+               *ngFor="let movie of movies | searchText: {'isNumber':'year', 'isString':'title'}: searchText"
+          >
+            <app-movie-single [movie]="movie"></app-movie-single>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
