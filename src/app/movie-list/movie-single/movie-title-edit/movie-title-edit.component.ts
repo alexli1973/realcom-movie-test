@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AlertService } from '../../../shared/services/alert.service';
 
 @Component({
   selector: 'app-movie-title-edit',
@@ -13,13 +14,13 @@ export class MovieTitleEditComponent implements OnInit {
   movieId: string;
 
   @Output()
-  valueChangeEvents: EventEmitter = new EventEmitter<string>();
+  valueChangeEvents: EventEmitter<string> = new EventEmitter<string>();
   @Output()
-  cancelEvents: EventEmitter = new EventEmitter<void>();
+  cancelEvents: EventEmitter<any> = new EventEmitter<any>();
 
   newValue: string;
 
-  constructor() {}
+  constructor(private alertService: AlertService) {}
 
   ngOnInit(): void {
     this.newValue = this.movieTitle; // primitive, no mutable
@@ -36,10 +37,12 @@ export class MovieTitleEditComponent implements OnInit {
   }
 
   cancelChanges(): void {
-    this.cancelEvents.emit();
+    this.cancelEvents.emit(true);
+    this.alertService.warning(`changes canceled`);
   }
 
   saveChanges(): void {
     this.valueChangeEvents.emit(this.newValue);
+    this.alertService.success(`changes have been sent to the server`);
   }
 }

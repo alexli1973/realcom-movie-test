@@ -13,6 +13,7 @@ import { FilterByTypePipe } from './shared/pipes/filter-by-type.pipe';
 import {FormsModule} from '@angular/forms';
 import { SearchTextPipe } from './shared/pipes/search-text.pipe';
 import { MovieTitleEditComponent } from './movie-list/movie-single/movie-title-edit/movie-title-edit.component';
+import { AlertComponent } from './shared/components/alert/alert.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { MovieTitleEditComponent } from './movie-list/movie-single/movie-title-e
     MenuComponent,
     FilterByTypePipe,
     SearchTextPipe,
-    MovieTitleEditComponent
+    MovieTitleEditComponent,
+    AlertComponent
   ],
     imports: [
         BrowserModule,
